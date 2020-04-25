@@ -21,7 +21,7 @@ public class DatabaseServer {
     }
 
     public DatabaseCommandResult executeNextCommand(String commandText) {
-        if (commandText == null) {
+        if (commandText.isEmpty()) {
             return DatabaseCommandResult.error("Nothing to execute");
         }
         String[] args = commandText.split(" ");

@@ -7,7 +7,6 @@ import java.util.Optional;
 
 public class CommandUpdateKey implements DatabaseCommand {
     private static final int ARGS_NUM = 4;
-    private static final Parser PARSER = new Parser();
     private final ExecutionEnvironment environment;
     private final String databaseName;
     private final String tableName;
@@ -16,11 +15,12 @@ public class CommandUpdateKey implements DatabaseCommand {
 
     public CommandUpdateKey(ExecutionEnvironment env, String... args) {
         environment = env;
-        PARSER.setArgs(ARGS_NUM, args);
-        databaseName = PARSER.getArg(Parser.argNames.databaseName);
-        tableName = PARSER.getArg(Parser.argNames.tableName);
-        key = PARSER.getArg(Parser.argNames.key);
-        value = PARSER.getArg(Parser.argNames.value);
+        Parser parser = new Parser();
+        parser.setArgs(ARGS_NUM, args);
+        databaseName = parser.getArg(Parser.argNames.databaseName);
+        tableName = parser.getArg(Parser.argNames.tableName);
+        key = parser.getArg(Parser.argNames.key);
+        value = parser.getArg(Parser.argNames.value);
     }
 
     @Override

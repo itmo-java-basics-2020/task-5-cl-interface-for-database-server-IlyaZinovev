@@ -7,16 +7,16 @@ import java.util.Optional;
 
 public class CommandCreateTable implements DatabaseCommand {
     private static final int ARGS_NUM = 2;
-    private static final Parser PARSER = new Parser();
     private final ExecutionEnvironment environment;
     private final String databaseName;
     private final String tableName;
 
     public CommandCreateTable(ExecutionEnvironment env, String... args) {
         environment = env;
-        PARSER.setArgs(ARGS_NUM, args);
-        databaseName = PARSER.getArg(Parser.argNames.databaseName);
-        tableName = PARSER.getArg(Parser.argNames.tableName);
+        Parser parser = new Parser();
+        parser.setArgs(ARGS_NUM, args);
+        databaseName = parser.getArg(Parser.argNames.databaseName);
+        tableName = parser.getArg(Parser.argNames.tableName);
     }
 
     @Override
